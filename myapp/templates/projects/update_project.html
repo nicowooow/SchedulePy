@@ -1,0 +1,9 @@
+{% extends 'projects/projects.html' %} 
+{% block vista %}
+    <h1>update a project</h1>
+<form method='POST'>
+    {% csrf_token %}
+    {{form}}
+    <input type='submit' value='send'>
+</form> 
+{% endblock %}

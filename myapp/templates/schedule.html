@@ -1,0 +1,29 @@
+{% extends 'layouts/header.html' %}
+{% block title %}Schedule{% endblock %}
+{% block content %}
+<main>
+  <aside>
+    <ul>
+      <li><a href="/schedule/">Schedule</a></li>
+      <li><a href="/schedule/projects/">Projects</a></li>
+      <li><a href="/schedule/projects/tasks/">Tasks</a></li>
+    </ul>
+  </aside>
+  <section>
+    <h1>Schedule</h1>
+    <p>Here you can see your activit ies in a schedule</p>
+    {% for project in projects %}
+    <div>
+      <h1>
+        {{project.title}} - {% if not project.done %} project pending ⏰ 
+        {% else %} project done ✅ 
+        {% endif %}
+      </h1>
+      {% for task in tasks %} {% if task.project_id == project.id %}
+      <p>{{task.title}}</p>
+      {% endif %} {% endfor %}
+    </div>
+    {% endfor %}
+  </section>
+</main>
+{% endblock %}

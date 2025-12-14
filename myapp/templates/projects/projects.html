@@ -1,0 +1,37 @@
+{% extends 'layouts/header.html' %} 
+{% load static %}
+{% block title %}Projects{% endblock %}
+
+{% block extra_css %}
+  {% if page_css %}
+    {% for css in page_css %}
+      <link rel="stylesheet" href="{% static css %}">
+    {% endfor %}
+  {% endif %}
+{% endblock %}
+{% block content %}
+
+<main>
+  <aside class='menu_schedule'>
+    <ul>
+      <li><a href="/schedule/">Schedule</a></li>
+      <li><a href="/schedule/projects/">Projects</a></li>
+      <li><a href="/schedule/projects/tasks/">Tasks</a></li>
+    </ul>
+  </aside>
+  <section class='content_projects'>
+    <section>
+      <h1>Projects</h1>
+      <a href='/schedule/projects/'>all</a>
+      <a href='/schedule/projects/create/'>create</a>
+      <a href='/schedule/projects/delete/'>delete</a>
+      <a href='/schedule/projects/update/'>update</a>
+    </section>
+    <section>
+      {% block vista %}
+      
+      {% endblock %}
+    </section>
+  </section>
+</main>
+{% endblock %}

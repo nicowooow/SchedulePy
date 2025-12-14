@@ -1,0 +1,45 @@
+{% extends 'layouts/header.html' %} 
+{% load static %}
+{% block title %}Sign up{% endblock %}
+
+{% block extra_css %}
+  {% if page_css %}
+    <link rel="stylesheet" href="{% static page_css %}">
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<main>
+  <form action="post">
+    <label for="username">Username : </label>
+    <input type="text" name="username" id="username" placeholder="username" />
+
+    <label for="email">Email : </label>
+    <input
+      type="email"
+      name="email"
+      id="email"
+      placeholder="example@domine.ext"
+    />
+
+    <label for="password">Password : </label>
+    <input
+      type="password"
+      name="password"
+      id="password"
+      placeholder="secure password"
+    />
+
+    <label for="confirm_password">Confirm Password : </label>
+    <input
+      type="password"
+      name="confirm_password"
+      id="confirm_password"
+      placeholder="confirm secure password"
+    />
+
+    <input type="submit" value="register" />
+  </form>
+</main>
+{% endblock %}
