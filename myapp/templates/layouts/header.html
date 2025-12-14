@@ -17,20 +17,20 @@
       <nav>
         <section>
           <ul>
-            <li><a href="/" class="{% if request.path == '/' %}active{% endif %}" >Home</a></li>
-            <li><a href="/about/" class="{% if request.path == '/about' %}active{% endif %}" >About</a></li>
-            <li><a href="/calendar/" class="{% if request.path == '/calendar' %}active{% endif %}" >calendar</a></li>
-            <li><a href="/schedule/" class="{% if request.path == '/schedule' %}active{% endif %}">schedule</a></li>
+            <li><a href="{% url 'index' %}" class="{% if request.path == '/' %}active{% endif %}" >Home</a></li>
+            <li><a href="{% url 'about' %}" class="{% if request.path == '/about' %}active{% endif %}" >About</a></li>
+            <li><a href="{% url 'calendar' %}" class="{% if request.path == '/calendar' %}active{% endif %}" >calendar</a></li>
+            <li><a href="{% url 'schedule' %}" class="{% if request.path == '/schedule' %}active{% endif %}">schedule</a></li>
           </ul>
         </section>
         <section>
           <ul>
-            {% if active %}
-              <li><a href="/profile/" class="{% if request.path == '/profile' %}active{% endif %}" >profile</a></li>
-              <li><a href="/log-out/" class="{% if request.path == '/log-out' %}active{% endif %}" >log-out</a></li>
+            {% if request.user.is_authenticated %}
+              <li><a href="{% url 'profile' %}" class="{% if request.path == '/profile' %}active{% endif %}" >profile</a></li>
+              <li><a href="{% url 'log_out' %}" class="{% if request.path == '/log-out' %}active{% endif %}" >log-out</a></li>
             {% else %}
-              <li><a href="/sign-in/" class="{% if request.path == '/sign-in' %}active{% endif %}" >Sign in</a></li>
-              <li><a href="/sign-up/" class="{% if request.path == '/sign-up' %}active{% endif %}" >Sign up</a></li>
+              <li><a href="{% url 'sign_in' %}" class="{% if request.path == '/sign-in' %}active{% endif %}" >Sign in</a></li>
+              <li><a href="{% url 'sign_up' %}" class="{% if request.path == '/sign-up' %}active{% endif %}" >Sign up</a></li>
             {% endif %}
           </ul>
         </section>

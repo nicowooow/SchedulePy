@@ -1,0 +1,130 @@
+/* Contenedor base de los formularios dentro de main/section */
+main form,
+section form {
+  max-width: 520px;
+  margin-top: 1rem;
+  padding: 1.4rem 1.3rem 1.7rem;
+  border-radius: 20px;
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(55, 65, 81, 0.9);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* Títulos encima del formulario */
+main h1,
+section h1 {
+  font-size: 1.4rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+/* Label de campos */
+main form label,
+section form label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #9ca3af;
+  margin-bottom: 0.15rem;
+}
+
+/* Inputs, selects y textareas */
+main form input[type="text"],
+main form input[type="email"],
+main form input[type="password"],
+main form input[type="number"],
+main form select,
+main form textarea,
+section form input[type="text"],
+section form input[type="email"],
+section form input[type="password"],
+section form input[type="number"],
+section form select,
+section form textarea {
+  width: 100%;
+  padding: 0.55rem 0.8rem;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  background: rgba(15, 23, 42, 0.85);
+  color: #e5e7eb;
+  font-size: 0.95rem;
+  outline: none;
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease,
+    transform 0.1s ease;
+}
+
+/* Textarea un poco más alto */
+main form textarea,
+section form textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+/* Focus */
+main form input:focus,
+main form select:focus,
+main form textarea:focus,
+section form input:focus,
+section form select:focus,
+section form textarea:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.45),
+              0 0 20px rgba(56, 189, 248, 0.25);
+  background: rgba(15, 23, 42, 0.98);
+  transform: translateY(-1px);
+}
+
+/* Botones submit */
+main form input[type="submit"],
+section form input[type="submit"],
+main form button[type="submit"],
+section form button[type="submit"] {
+  margin-top: 0.7rem;
+  align-self: flex-start;
+  padding: 0.6rem 1.3rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #38bdf8, #a855f7);
+  color: #020617;
+  box-shadow: 0 14px 35px rgba(56, 189, 248, 0.7);
+  transition:
+    filter 0.2s ease,
+    transform 0.12s ease,
+    box-shadow 0.2s ease;
+}
+
+main form input[type="submit"]:hover,
+section form input[type="submit"]:hover,
+main form button[type="submit"]:hover,
+section form button[type="submit"]:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+  box-shadow: 0 18px 40px rgba(56, 189, 248, 0.85);
+}
+
+main form input[type="submit"]:active,
+section form input[type="submit"]:active,
+main form button[type="submit"]:active,
+section form button[type="submit"]:active {
+  transform: translateY(1px);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.9);
+}
+
+/* Mensajes de error o info simples */
+main form p,
+section form p {
+  font-size: 0.85rem;
+  color: #f97373;
+  margin-top: 0.2rem;
+}

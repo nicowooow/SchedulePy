@@ -1,4 +1,4 @@
-/* RESETEO BÁSICO */
+/* ========== RESETEO BÁSICO ========== */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -12,7 +12,7 @@ body {
   color: #e5e7eb;
 }
 
-/* MAIN: LAYOUT CON SIDEBAR */
+/* ========== LAYOUT PRINCIPAL (SIDEBAR + CONTENIDO) ========== */
 main {
   display: flex;
   align-items: flex-start;
@@ -22,7 +22,7 @@ main {
   padding: 0 1.5rem;
 }
 
-/* SIDEBAR LATERAL */
+/* Sidebar */
 main > aside {
   width: 210px;
   flex-shrink: 0;
@@ -59,14 +59,12 @@ main > aside li a {
     transform 0.1s ease;
 }
 
-/* Hover sidebar */
 main > aside li a:hover {
   background: rgba(37, 99, 235, 0.35);
   color: #f9fafb;
   transform: translateX(2px);
 }
 
-/* Link activo en sidebar (añade class="active" en el <a> correspondiente) */
 main > aside li a.active {
   background: linear-gradient(135deg, #38bdf8, #a855f7);
   color: #020617;
@@ -74,7 +72,7 @@ main > aside li a.active {
   opacity: 1;
 }
 
-/* CONTENIDO PRINCIPAL */
+/* Contenedor principal de contenido (Schedule / Projects / Tasks) */
 main > section {
   flex: 1;
   padding: 1.4rem 1.2rem 1.6rem;
@@ -87,7 +85,7 @@ main > section {
   backdrop-filter: blur(20px);
 }
 
-/* TÍTULOS Y TEXTO */
+/* Título y descripción generales dentro de main > section */
 main > section > h1 {
   font-size: 1.6rem;
   margin-bottom: 0.25rem;
@@ -101,7 +99,7 @@ main > section > p {
   margin-bottom: 1.4rem;
 }
 
-/* TARJETAS DE PROYECTO */
+/* Tarjetas genéricas (Schedule: proyectos + tareas) */
 main > section > div {
   margin-bottom: 1rem;
   padding: 0.9rem 1rem;
@@ -120,7 +118,248 @@ main > section > div p {
   color: #d1d5db;
 }
 
-/* RESPONSIVE */
+/* Texto de fecha (Schedule: Started / created at) */
+main > section > div .date,main > .content >section > div .date {
+  font-size: 0.85rem;
+  margin-bottom: 0.35rem;
+  color: #acfca5 !important;
+  opacity: 0.9;
+}
+/* ========== CABECERA PROJECTS / TASKS (iconos + tabs) ========== */
+/* usar <section class="content content_projects"> o content_tasks */
+
+.content > section:first-of-type {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.content > section:first-of-type h1 {
+  font-size: 1.5rem;
+  margin: 0;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* enlace + icono */
+.content > section:first-of-type a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  text-decoration: none;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  transition:
+    background 0.18s ease,
+    color 0.18s ease,
+    transform 0.1s ease,
+    box-shadow 0.18s ease;
+}
+
+.content > section:first-of-type a p {
+  margin: 0;
+}
+
+.content > section:first-of-type a svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* colores por acción (all, create, delete, update) */
+.content > section:first-of-type a:nth-of-type(1) {
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.7);
+}
+
+.content > section:first-of-type a:nth-of-type(2) {
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.7);
+}
+
+.content > section:first-of-type a:nth-of-type(3) {
+  color: #f97373;
+  border: 1px solid rgba(248, 113, 113, 0.7);
+}
+
+.content > section:first-of-type a:nth-of-type(4) {
+  color: #a855f7;
+  border: 1px solid rgba(168, 85, 247, 0.7);
+}
+
+.content > section:first-of-type a:hover {
+  background: rgba(15, 23, 42, 0.95);
+  color: #f9fafb;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.9);
+}
+
+/* ========== LISTA PROJECTS / TASKS (cards) ========== */
+
+.content > section:last-of-type {
+  margin-top: 0.5rem;
+}
+
+/* cards por defecto */
+.content > section:last-of-type > div {
+  margin-bottom: 1rem;
+  padding: 0.9rem 1rem;
+  border-radius: 18px;
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(55, 65, 81, 0.9);
+}
+
+.content > section:last-of-type > div h1 {
+  font-size: 1.05rem;
+  margin-bottom: 0.35rem;
+}
+
+/* subtítulo para Tasks: nombre de proyecto */
+.content > section:last-of-type > div h2 {
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+  color: #a5b4fc;
+}
+
+.content > section:last-of-type > div p {
+  font-size: 0.9rem;
+  color: #d1d5db;
+}
+
+/* ========== FORMULARIOS EN PROJECTS / TASKS ========== */
+
+.toggle-btn:hover {
+  background: rgba(37, 99, 235, 0.35);
+}
+
+
+.content > section:last-of-type form {
+  max-width: 520px;
+  margin-top: 0.6rem;
+  padding: 1.3rem 1.2rem 1.6rem;
+  border-radius: 18px;
+  background: rgba(15, 23, 42, 0.96);
+  border: 1px solid rgba(55, 65, 81, 0.9);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.content form label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #9ca3af;
+  margin-bottom: 0.15rem;
+}
+
+.content form input[type="text"],
+.content form textarea,
+.content form select {
+  width: 100%;
+  padding: 0.55rem 0.8rem;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  background: rgba(15, 23, 42, 0.85);
+  color: #e5e7eb;
+  font-size: 0.95rem;
+  outline: none;
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease,
+    transform 0.1s ease;
+}
+
+.content form textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.content form input:focus,
+.content form select:focus,
+.content form textarea:focus {
+  border-color: #38bdf8;
+  box-shadow:
+    0 0 0 1px rgba(56, 189, 248, 0.45),
+    0 0 20px rgba(56, 189, 248, 0.25);
+  background: rgba(15, 23, 42, 0.98);
+  transform: translateY(-1px);
+}
+
+/* botón submit */
+.content form input[type="submit"] {
+  margin-top: 0.7rem;
+  align-self: flex-start;
+  padding: 0.6rem 1.3rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #38bdf8, #a855f7);
+  color: #020617;
+  box-shadow: 0 14px 35px rgba(56, 189, 248, 0.7);
+  transition:
+    filter 0.2s ease,
+    transform 0.12s ease,
+    box-shadow 0.2s ease;
+}
+
+.content form input[type="submit"]:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+  box-shadow: 0 18px 40px rgba(56, 189, 248, 0.85);
+}
+
+/* contenedor título + botón en Tasks */
+.content > section:last-of-type > div > div {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between; /* separa título y botón */
+  gap: 0.75rem;
+  margin-bottom: 0.35rem;
+}
+
+/* título dentro de ese contenedor */
+.content > section:last-of-type > div > div h1 {
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+/* botón toggle */
+.toggle-btn {
+  display: inline-block;
+  padding: 0.25rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  color: #e5e7eb;
+  background: rgba(15, 23, 42, 0.9);
+  cursor: pointer;
+  transition:
+    background 0.18s ease,
+    color 0.18s ease,
+    transform 0.1s ease,
+    box-shadow 0.18s ease;
+}
+
+.toggle-btn:hover {
+  background: rgba(37, 99, 235, 0.35);
+  color: #f9fafb;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.9);
+}
+
+
+/* ========== RESPONSIVE ========== */
 @media (max-width: 900px) {
   main {
     flex-direction: column;

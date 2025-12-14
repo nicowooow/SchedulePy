@@ -1,11 +1,10 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
+
 class Profile(models.Model):
-    username = models.CharField(max_length=100)
     bio = models.TextField()
-    email = models.EmailField(unique=True)
-    password = models.CharField(max_length=100)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     
     def __str__(self):
         return self.username
@@ -30,7 +29,7 @@ class Task(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     
     def __str__(self):
-        return self.title+' - '+self.id_proyect.title
+        return self.title+' - '+self.project.title
     
 #para subir estos cambios podemos usar :
 # python manage.py makemigrations myapp, para que los cambios en myapp

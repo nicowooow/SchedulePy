@@ -14,21 +14,66 @@
 <main>
   <aside class='menu_schedule'>
     <ul>
-      <li><a href="/schedule/">Schedule</a></li>
-      <li><a href="/schedule/projects/">Projects</a></li>
-      <li><a href="/schedule/projects/tasks/">Tasks</a></li>
+      <li><a href="{% url 'schedule' %}">Schedule</a></li>
+      <li><a href="{% url 'project' %}">Projects</a></li>
+      <li><a href="{% url 'task' %}">Tasks</a></li>
     </ul>
   </aside>
-  <section class='content_projects'>
+  <section class='content'>
     <section>
       <h1>Projects</h1>
-      <a href='/schedule/projects/'>all</a>
-      <a href='/schedule/projects/create/'>create</a>
-      <a href='/schedule/projects/delete/'>delete</a>
-      <a href='/schedule/projects/update/'>update</a>
+      <a href="{% url 'project' %}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-list">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M9 6l11 0"/>
+            <path d="M9 12l11 0"/>
+            <path d="M9 18l11 0"/>
+            <path d="M5 6l0 .01"/>
+            <path d="M5 12l0 .01"/>
+            <path d="M5 18l0 .01"/>
+        </svg>
+         <p>all</p>
+      </a>
+      <a href="{% url 'create_project' %}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-circle-plus">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"/>
+            <path d="M9 12h6"/>
+            <path d="M12 9v6"/>
+        </svg>
+        <p>create</p>
+      </a>
+      <a href="{% url 'delete_project' %}"> 
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-trash">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M4 7l16 0"/>
+            <path d="M10 11l0 6"/>
+            <path d="M14 11l0 6"/>
+            <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"/>
+            <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"/>
+        </svg>
+        <p>delete</p>
+      </a>
+      <a href="{% url 'update_project' %}"> 
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-tool">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5"/>
+        </svg>
+        <p>update</p>
+      </a>
     </section>
     <section>
       {% block vista %}
+        {% for project in projects %}
+            <div>
+              <h1>{{project.title}} - {% if project.done == False%}no completed ❌
+                {% else %}completed ✔
+                {% endif %}
+              </h1>
+              <p>{{project.description}}</p>
+              <p class="date">created at : {{project.created_at}}</p>
+            </div>
+        {% endfor %}
       
       {% endblock %}
     </section>

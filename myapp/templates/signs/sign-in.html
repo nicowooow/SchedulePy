@@ -11,13 +11,16 @@
 {% block content %}
 
     <main>
-      <form action="post">
+      <form action="{% url 'sign_in'%}" method="post">
+        {% csrf_token %}
         <label for="username_email">Username / email : </label>
         <input type="text" name="username_email" id="username_email" placeholder="example@domine.ext / username"/>
 
         <label for="password">Password : </label>
         <input type="password" name="password" id="password" placeholder="secure password"/>
-
+        {% if action %}
+          <p>{{ action }}</p>
+        {% endif %}
         <p>if you don't have an account,<a href="/sign-up/"> sign up here</a></li></p>
         <input type="submit" value="log in" />
       </form>

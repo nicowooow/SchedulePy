@@ -11,7 +11,7 @@
   </aside>
   <section>
     <h1>Schedule</h1>
-    <p>Here you can see your activit ies in a schedule</p>
+    <p>Here you can see your activities in a schedule</p>
     {% for project in projects %}
     <div>
       <h1>
@@ -19,9 +19,11 @@
         {% else %} project done ✅ 
         {% endif %}
       </h1>
+
       {% for task in tasks %} {% if task.project_id == project.id %}
       <p>{{task.title}}</p>
       {% endif %} {% endfor %}
+      <p class="date">Started : {{project.created_at}}</p>
     </div>
     {% endfor %}
   </section>
