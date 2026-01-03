@@ -1,6 +1,6 @@
 from myapp import views
 from django.urls import path
-from . import views
+from myapp.views import *
 #al poner el . haces referencia al directorio actual
 # from myapp.views import home
 #traes la vista home desde myapp.views

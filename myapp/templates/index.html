@@ -1,7 +1,19 @@
-{% extends 'layouts/header.html' %} {% block content %}
+{% extends 'layouts/header.html' %} 
+{% load static %}
+{% block title %}Index{% endblock %}
 
+{% block extra_css %}
+  {% if page_css %}
+      <link rel="stylesheet" href="{% static page_css %}">
+  {% endif %}
+{% endblock %}
+
+{% block content %}
 <main>
-  <h1>Welcome to the Index Page</h1>
-  <p>This is the main landing page of the application.</p>
+  <h1>Welcome to SchedulePy</h1>
+  <p>here you can take note of interesting stuffs, important, activities, something that you need remember, projects and much more. </p>
+  <h2>what can you do here??</h2>
+  <p>if you have a project you can look this</p>
+  <img src="images/schedule_example.png" alt="pre view of schedule"/>
 </main>
 {% endblock %}

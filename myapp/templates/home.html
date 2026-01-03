@@ -1,29 +1,25 @@
-{% extends 'layouts/header.html' %} 
-{% load static %}
-{% block title %}Projects{% endblock %}
-
-{% block extra_css %}
-  {% if page_css %}
+{% extends 'layouts/header.html' %} {% load static %} 
+{% block title%}Projects{% endblock %} 
+{% block extra_css %} 
+  {% if page_css %} 
     {% for css in page_css %}
-      <link rel="stylesheet" href="{% static css %}">
+      <link rel="stylesheet" href="{% static css %}" />
     {% endfor %}
-  {% endif %}
-{% endblock %}
+  {% endif %} 
+{% endblock %} 
 {% block content %}
 
 <main>
-    <h1>Hello {{user.username}}!!</h1>
-    <p>it's a pleasure you use this platform</p>
-    <h3>What would you like to do??</h3>
-    <ul>
-        <li><a href="{% url 'create_project' %}">Create a project??</a></li>
-        <li><a href="{% url 'create_task' %}">Create a task??</a></li>
-        <li><a href="{% url 'calendar' %}">See your calendar??</a></li>
-        <li><a href="{% url 'schedule' %}">See yout schedule??</a></li>
-        {% comment %} <li></li>
-        <li></li>
-        <li></li> {% endcomment %}
-
-    </ul>    
+  <h1>Hello {{user.username}}!!</h1>
+  <p>it's a pleasure you use this platform</p>
+  <h3>What would you like to do??</h3>
+  <ul>
+    <li><a href="{% url 'schedule' %}"><b>See yout schedule??</b></a></li>
+    <li><a href="{% url 'create_project' %}"><b>Create a project??</b></a></li>
+    <li><a href="{% url 'create_task' %}"><b>Create a task??</b></a></li>
+    <li><a href="{% url 'calendar' %}">See your calendar??</a></li>
+    <li><a href="{% url 'project' %}">See your projects??</a></li>
+    <li><a href="{% url 'task' %}">See your tasks??</a></li>
+  </ul>
 </main>
 {% endblock %}
