@@ -7,9 +7,9 @@
 
 body {
   min-height: 100vh;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: radial-gradient(circle at top left, #0f172a 0, #020617 40%, #000 100%);
-  color: #e5e7eb;
+  font-family: var(--font-main);
+  background: var(--color-bg-body);
+  color: var(--color-text-main);
 }
 
 /* ========== LAYOUT PRINCIPAL (SIDEBAR + CONTENIDO) ========== */
@@ -28,11 +28,9 @@ main > aside {
   flex-shrink: 0;
   padding: 1.3rem 1rem;
   border-radius: 22px;
-  background: rgba(15, 23, 42, 0.9);
-  border: 1px solid rgba(148, 163, 184, 0.6);
-  box-shadow:
-    0 22px 55px rgba(15, 23, 42, 0.9),
-    0 0 0 1px rgba(15, 23, 42, 0.9) inset;
+  background: var(--color-glass-bg-strong);
+  border: 1px solid var(--color-glass-border-strong);
+  box-shadow: var(--shadow-sidebar);
   backdrop-filter: blur(18px);
 }
 
@@ -46,9 +44,9 @@ main > aside ul {
 main > aside li a {
   display: block;
   padding: 0.55rem 0.75rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   text-decoration: none;
-  color: #e5e7eb;
+  color: var(--color-text-main);
   font-size: 0.9rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -66,7 +64,7 @@ main > aside li a:hover {
 }
 
 main > aside li a.active {
-  background: linear-gradient(135deg, #38bdf8, #a855f7);
+  background: var(--button-gradient);
   color: #020617;
   box-shadow: 0 10px 28px rgba(56, 189, 248, 0.7);
   opacity: 1;
@@ -76,12 +74,10 @@ main > aside li a.active {
 main > section {
   flex: 1;
   padding: 1.4rem 1.2rem 1.6rem;
-  border-radius: 24px;
-  background: rgba(15, 23, 42, 0.82);
-  border: 1px solid rgba(148, 163, 184, 0.55);
-  box-shadow:
-    0 24px 60px rgba(15, 23, 42, 0.95),
-    0 0 0 1px rgba(15, 23, 42, 0.95) inset;
+  border-radius: var(--radius-card-lg);
+  background: var(--color-glass-bg);
+  border: 1px solid var(--color-glass-border);
+box-shadow: var(--shadow-strong);
   backdrop-filter: blur(20px);
 }
 
@@ -95,7 +91,7 @@ main > section > h1 {
 
 main > section > p {
   font-size: 0.95rem;
-  color: #9ca3af;
+  color: var(--color-text-muted);
   margin-bottom: 1.4rem;
 }
 
@@ -103,9 +99,9 @@ main > section > p {
 main > section > div {
   margin-bottom: 1rem;
   padding: 0.9rem 1rem;
-  border-radius: 18px;
-  background: rgba(15, 23, 42, 0.95);
-  border: 1px solid rgba(55, 65, 81, 0.9);
+  border-radius: var(--radius-card-sm);
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
 }
 
 main > section > div h1 {
@@ -115,7 +111,7 @@ main > section > div h1 {
 
 main > section > div p {
   font-size: 0.9rem;
-  color: #d1d5db;
+  color: var(--color-text-soft);
 }
 
 /* Texto de fecha (Schedule: Started / created at) */
@@ -149,7 +145,7 @@ main > section > div .date,main > .content >section > div .date {
   gap: 0.35rem;
   text-decoration: none;
   padding: 0.25rem 0.65rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   font-size: 0.9rem;
   transition:
     background 0.18s ease,
@@ -169,27 +165,27 @@ main > section > div .date,main > .content >section > div .date {
 
 /* colores por acción (all, create, delete, update) */
 .content > section:first-of-type a:nth-of-type(1) {
-  color: #38bdf8;
+  color: var(--color-accent-blue);
   border: 1px solid rgba(56, 189, 248, 0.7);
 }
 
 .content > section:first-of-type a:nth-of-type(2) {
-  color: #22c55e;
+  color: var(--color-accent-green);
   border: 1px solid rgba(34, 197, 94, 0.7);
 }
 
 .content > section:first-of-type a:nth-of-type(3) {
-  color: #f97373;
+  color: var(--color-accent-red);
   border: 1px solid rgba(248, 113, 113, 0.7);
 }
 
 .content > section:first-of-type a:nth-of-type(4) {
-  color: #a855f7;
+  color: var(--color-accent-purple);
   border: 1px solid rgba(168, 85, 247, 0.7);
 }
 
 .content > section:first-of-type a:hover {
-  background: rgba(15, 23, 42, 0.95);
+  background: var(--color-card-bg);
   color: #f9fafb;
   transform: translateY(-1px);
   box-shadow: 0 10px 26px rgba(15, 23, 42, 0.9);
@@ -205,9 +201,9 @@ main > section > div .date,main > .content >section > div .date {
 .content > section:last-of-type > div {
   margin-bottom: 1rem;
   padding: 0.9rem 1rem;
-  border-radius: 18px;
-  background: rgba(15, 23, 42, 0.95);
-  border: 1px solid rgba(55, 65, 81, 0.9);
+  border-radius: var(--radius-card-sm);
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
 }
 
 .content > section:last-of-type > div h1 {
@@ -224,7 +220,7 @@ main > section > div .date,main > .content >section > div .date {
 
 .content > section:last-of-type > div p {
   font-size: 0.9rem;
-  color: #d1d5db;
+  color: var(--color-text-soft);
 }
 
 /* ========== FORMULARIOS EN PROJECTS / TASKS ========== */
@@ -238,9 +234,9 @@ main > section > div .date,main > .content >section > div .date {
   max-width: 520px;
   margin-top: 0.6rem;
   padding: 1.3rem 1.2rem 1.6rem;
-  border-radius: 18px;
+  border-radius: var(--radius-card-sm);
   background: rgba(15, 23, 42, 0.96);
-  border: 1px solid rgba(55, 65, 81, 0.9);
+  border: 1px solid var(--color-card-border);
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
@@ -251,7 +247,7 @@ main > section > div .date,main > .content >section > div .date {
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #9ca3af;
+  color: var(--color-text-muted);
   margin-bottom: 0.15rem;
 }
 
@@ -260,10 +256,10 @@ main > section > div .date,main > .content >section > div .date {
 .content form select {
   width: 100%;
   padding: 0.55rem 0.8rem;
-  border-radius: 12px;
-  border: 1px solid rgba(148, 163, 184, 0.6);
-  background: rgba(15, 23, 42, 0.85);
-  color: #e5e7eb;
+  border-radius: var(--radius-card-sm);
+  border: 1px solid var(--color-glass-border-strong);
+  background: var(--input-bg);
+  color: var(--color-text-main);
   font-size: 0.95rem;
   outline: none;
   transition:
@@ -281,10 +277,8 @@ main > section > div .date,main > .content >section > div .date {
 .content form input:focus,
 .content form select:focus,
 .content form textarea:focus {
-  border-color: #38bdf8;
-  box-shadow:
-    0 0 0 1px rgba(56, 189, 248, 0.45),
-    0 0 20px rgba(56, 189, 248, 0.25);
+  border-color: var(--color-accent-blue);
+  box-shadow: var(--input-focus-shadow);
   background: rgba(15, 23, 42, 0.98);
   transform: translateY(-1px);
 }
@@ -294,16 +288,16 @@ main > section > div .date,main > .content >section > div .date {
   margin-top: 0.7rem;
   align-self: flex-start;
   padding: 0.6rem 1.3rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   border: none;
   cursor: pointer;
   font-weight: 600;
   font-size: 0.9rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  background: linear-gradient(135deg, #38bdf8, #a855f7);
+  background: var(--button-gradient);
   color: #020617;
-  box-shadow: 0 14px 35px rgba(56, 189, 248, 0.7);
+  box-shadow: var(--shadow-card);
   transition:
     filter 0.2s ease,
     transform 0.12s ease,
@@ -335,14 +329,14 @@ main > section > div .date,main > .content >section > div .date {
 .toggle-btn {
   display: inline-block;
   padding: 0.25rem 0.9rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   border: 1px solid rgba(148, 163, 184, 0.7);
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   text-decoration: none;
-  color: #e5e7eb;
-  background: rgba(15, 23, 42, 0.9);
+  color: var(--color-text-main);
+  background: var(--color-glass-bg-strong);
   cursor: pointer;
   transition:
     background 0.18s ease,

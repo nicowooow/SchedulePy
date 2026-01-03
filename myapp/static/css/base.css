@@ -1,0 +1,69 @@
+:root {
+  /* Colores principales */
+  --color-bg-body: radial-gradient(circle at top left, #0f172a 0, #020617 40%, #000 100%);
+  --color-text-main: #e5e7eb;
+  --color-text-muted: #9ca3af;
+  --color-text-soft: #d1d5db;
+  --color-accent-blue: #38bdf8;
+  --color-accent-purple: #a855f7;
+  --color-accent-green: #22c55e;
+  --color-accent-red: #f97373;
+  --color-card-border: rgba(55, 65, 81, 0.9);
+  --color-card-bg: rgba(15, 23, 42, 0.95);
+  --color-glass-bg: rgba(15, 23, 42, 0.82);
+  --color-glass-border: rgba(148, 163, 184, 0.55);
+
+  /* Tipografía */
+  --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* Radios */
+  --radius-pill: 999px;
+  --radius-card-lg: 24px;
+  --radius-card-md: 20px;
+  --radius-card-sm: 16px;
+  --radius-input: 12px;
+
+  /* Sombras */
+  --shadow-strong: 0 24px 60px rgba(15, 23, 42, 0.95);
+  --shadow-card: 0 14px 35px rgba(56, 189, 248, 0.7);
+  --shadow-blue-soft: 0 14px 35px rgba(37, 99, 235, 0.5);
+
+  /* Espaciados */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 0.75rem;
+  --space-lg: 1rem;
+  --space-xl: 1.5rem;
+
+  /* Formularios */
+  --input-bg: rgba(15, 23, 42, 0.85);
+  --input-border: rgba(148, 163, 184, 0.6);
+  --input-focus-shadow: 0 0 0 1px rgba(56, 189, 248, 0.45), 0 0 20px rgba(56, 189, 248, 0.25);
+  --button-gradient: linear-gradient(135deg, var(--color-accent-blue), var(--color-accent-purple));
+  --color-glass-bg-strong: rgba(15, 23, 42, 0.9);
+  --color-glass-border-strong: rgba(148, 163, 184, 0.6);
+
+  --shadow-sidebar: 0 22px 55px rgba(15, 23, 42, 0.9),
+                    0 0 0 1px rgba(15, 23, 42, 0.9) inset;
+  --shadow-blue-card: 0 14px 35px rgba(37, 99, 235, 0.5);
+
+  --color-toggle-border: rgba(148, 163, 184, 0.7);
+  --color-toggle-bg: rgba(15, 23, 42, 0.9);
+  --color-toggle-hover-bg: rgba(37, 99, 235, 0.35);
+
+  --color-error-text: #f97373;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-main);
+  background: var(--color-bg-body);
+  color: var(--color-text-main);
+}
+
