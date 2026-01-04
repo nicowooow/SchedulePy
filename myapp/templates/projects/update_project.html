@@ -1,7 +1,7 @@
 {% extends 'projects/projects.html' %} 
 {% block vista %}
     <h1>update a project</h1>
-<form method='POST'>
+<form method='POST' action={% url "update_project" %} id="updateProject">
     {% csrf_token %}
     {{form}}
     <input type='submit' value='update'>

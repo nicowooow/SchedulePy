@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 from .profiles import Profile
 
 class Project(models.Model):
@@ -6,6 +7,7 @@ class Project(models.Model):
     description = models.TextField()
     done = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
+    date = models.DateField(default=timezone.now)
     updated_at = models.DateTimeField(auto_now=True)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     

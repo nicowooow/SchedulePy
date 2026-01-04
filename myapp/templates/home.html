@@ -14,12 +14,38 @@
   <p>it's a pleasure you use this platform</p>
   <h3>What would you like to do??</h3>
   <ul>
-    <li><a href="{% url 'schedule' %}"><b>See yout schedule??</b></a></li>
-    <li><a href="{% url 'create_project' %}"><b>Create a project??</b></a></li>
-    <li><a href="{% url 'create_task' %}"><b>Create a task??</b></a></li>
-    <li><a href="{% url 'calendar' %}">See your calendar??</a></li>
-    <li><a href="{% url 'project' %}">See your projects??</a></li>
-    <li><a href="{% url 'task' %}">See your tasks??</a></li>
+    <li><a href="{% url 'schedule' %}"><b>View your schedule</b></a></li>
+    <li><a href="{% url 'create_project' %}"><b>Create a new project</b></a></li>
+    <li><a href="{% url 'create_task' %}"><b>Create a new task</b></a></li>
+    <li><a href="{% url 'calendar' %}">Open your calendar</a></li>
+    <li><a href="{% url 'project' %}">See all projects</a></li>
+    <li><a href="{% url 'task' %}">See all tasks</a></li>
   </ul>
+  <section>
+  <h3>Your summary</h3>
+  
+  <p>You have {{ projects_count }} projects and {{ tasks_count }} tasks.</p>
+  {% if pending_tasks %}
+    <h4>Next tasks</h4>
+    <ul>
+      {% for task in pending_tasks %}
+        <li>{{ task.title }} ({{ task.status }}) – {{ task.due_date|date:"M d, H:i" }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No pending tasks. Enjoy your free time!</p>
+  {% endif %}
+  <br>
+  {% if projects_count == 0 %}
+  <p>You don’t have any projects yet. Start by creating your first one.</p>
+  {% endif %}
+  {% if last_project %}
+  <h3>Continue with your last project</h3>
+  <p>{{ last_project.title }}</p>
+  <a href="{% url 'task' %}">Go to its tasks</a>
+  {% endif %}
+
+
+</section>
 </main>
 {% endblock %}

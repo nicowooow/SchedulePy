@@ -1,0 +1,55 @@
+
+main {
+  max-width: 900px;
+}
+
+main h2 {
+  font-size: 1.2rem;
+  margin-top: 1.4rem;
+  margin-bottom: 0.4rem;
+}
+
+main p {
+  font-size: 0.95rem;
+  color: var(--color-text-soft);
+  line-height: 1.6;
+}
+
+/* lista de redes sociales */
+.social-links {
+  list-style: none;
+  padding: 0;
+  margin: 0.6rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.social-links li {
+  margin: 0;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  text-decoration: none;
+  font-size: 0.9rem;
+  color: var(--color-text-main);
+  background: rgba(15, 23, 42, 0.7);
+  transition: background 0.18s ease, transform 0.1s ease, box-shadow 0.18s ease;
+}
+
+.social-links a img {
+  width: 18px;
+  height: 18px;
+}
+
+.social-links a:hover {
+  background: rgba(37, 99, 235, 0.35);
+  box-shadow: var(--shadow-blue-soft);
+  transform: translateY(-1px);
+}

@@ -28,14 +28,18 @@ def projects(request):
     
 @login_required(login_url='sign_in')
 def create_projects(request):
-    if request.method == 'GET':
-        return render(request,'projects/create_project.html',{
+    print('METHOD =>', request.method)
+    print('PATH   =>', request.path)
+    print('POST   =>', request.POST)
+    
+    if request.method == 'POST':
+        print(request.POST['title'])
+        print(request.POST['description'])
+        
+    return render(request,'projects/create_project.html',{
             "page_css":["css/schedule-projects-tasks.css","css/forms.css"],
             "form":CreateNewProject()
             })
-    else :
-        print(request.POST['title'])
-        print(request.POST['description'])
         
 @login_required(login_url='sign_in')
 def delete_projects(request):

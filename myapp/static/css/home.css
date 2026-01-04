@@ -6,7 +6,7 @@ main {
   border-radius: var(--radius-card-lg);
   background: var(--input-bg);
   border: 1px solid var(--color-glass-border);
-box-shadow: var(--shadow-strong);
+  box-shadow: var(--shadow-strong);
   backdrop-filter: blur(20px);
 }
 
@@ -47,10 +47,7 @@ main li {
   border-radius: var(--radius-card-sm);
   background: var(--color-card-bg);
   border: 1px solid var(--color-card-border);
-  transition:
-    background 0.18s ease,
-    transform 0.1s ease,
-    box-shadow 0.18s ease;
+  transition: background 0.18s ease, transform 0.1s ease, box-shadow 0.18s ease;
 }
 
 /* el enlace ocupa todo el bloque */
@@ -71,6 +68,45 @@ main li:hover {
   transform: translateY(-1px);
 }
 
+.social-links {
+  list-style: none;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.social-links li a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  background: rgba(15, 23, 42, 0.9); /* pill siempre visible */
+  color: #e5e7eb;
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: all 0.18s ease-out;
+}
+
+/* BACKDROP SIEMPRE ACTIVO PARA EL ICONO */
+.icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+}
+
+.icon-wrap img {
+  width: 14px;
+  height: 14px;
+}
+
+/* hover solo mejora el efecto, no la visibilidad base */
+.social-links li a:hover {
+  filter: brightness(1.05);
+  box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.8), 0 0 14px rgba(15, 23, 42, 0.9);
+}
 
 /* responsive */
 @media (max-width: 768px) {

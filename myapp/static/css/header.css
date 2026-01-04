@@ -4,6 +4,11 @@ header {
   top: 0;
   z-index: 20;
   padding: 0.75rem 0;
+  /* Fondo aplicado al header (cubre todo) para evitar que el contenido detrás se vea) */
+  background: linear-gradient(180deg, rgba(2,6,23,0.45), rgba(2,6,23,0.28));
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  transition: background 220ms ease, box-shadow 220ms ease, padding 180ms ease;
 }
 
 /* BARRA “GLASS” */
@@ -16,13 +21,12 @@ header nav {
   align-items: center;
   gap: 2rem;
 
-  background: var(--color-glass-bg);              /* oscuro translúcido */
+  /* fondo más opaco para que combine con el fondo general y no se vea el contenido detrás */
+  background: var(--color-glass-bg-strong);
   border-radius: var(--radius-pill);
-  border: 1px solid var(--color-glass-border);
-  box-shadow:
-    0 18px 45px rgba(15, 23, 42, 0.75),
-    0 0 0 1px rgba(15, 23, 42, 0.75) inset;
-  backdrop-filter: blur(18px);                      /* efecto glass */
+  border: 1px solid var(--color-glass-border-strong);
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.6);
+  backdrop-filter: blur(6px); /* menor blur para mantener legibilidad */
 }
 
 /* SECCIONES IZQ / DCHA */

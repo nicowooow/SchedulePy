@@ -1,7 +1,13 @@
-{% extends 'layouts/header.html' %} {% block content %}
+{% extends 'layouts/header.html' %} 
+{% load static %} {% block extra_css %} {%if page_css %} {% for css in page_css %}
+<link rel="stylesheet" href="{% static css %}" />
+{% endfor %} {% endif %} {% endblock %}
+{% block content %}
 
 <main>
   <h1>Calendar Profile</h1>
   <p>Here you can see your activities in a calendar</p>
+  <div id="calendar"> </div>
+  <script src="{% static "js/calendar.js" %}"></script>
 </main>
 {% endblock %}

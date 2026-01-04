@@ -1,9 +1,96 @@
-{% extends 'layouts/header.html' %} {% block content %}
-
+{% extends 'layouts/header.html' %} {% load static %} {% block extra_css %} {%if page_css %} {% for css in page_css %}
+<link rel="stylesheet" href="{% static css %}" />
+{% endfor %} {% endif %} {% endblock %} {% block content %}
 <main>
   <h1>About us</h1>
   <p>
-    Welcome, I've created this page because I need to aprove, it's like an exam
+    Welcome! This page is part of a learning project where I built a small CRUD
+    app to practice Django and front‑end skills.
   </p>
+  <h2>Who am I?</h2>
+  <p>
+    I’m a student who wants to keep improving programming skills because
+    building things like this is something I really enjoy.
+  </p>
+  <h2>Want reach me ?</h2>
+  <p>You can currently find me on:</p>
+  <ul class="social-links">
+    <li>
+      <a
+        href="https://www.instagram.com/the_nicowooow/"
+        title="link to Instagram"
+        target="_blank"
+      >
+        <span class="icon-wrap">
+          <img
+            src="https://nicowooow.site/public/Instagram.webp"
+            alt="logo de Instagram"
+          />
+        </span>
+        Instagram
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://www.facebook.com/people/nicowooow/61585956322980/"
+        title="link to Facebook"
+        target="_blank"
+      >
+        <span class="icon-wrap">
+          <img
+            src="https://nicowooow.site/public/Facebook.webp"
+            alt="logo de Facebook"
+          /> </span
+        >Facebook
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://www.threads.com/@the_nicowooow?hl=es"
+        title="link to Threads"
+        target="_blank"
+      >
+        <span class="icon-wrap">
+          <img
+            src="https://nicowooow.site/public/Threads.webp"
+            alt="logo de threads"
+          />
+          </span>
+          Threads
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://nicowooow.site"
+        title="link to X/Twitter"
+        target="_blank"
+      >
+        <span class="icon-wrap">
+          <img
+            src="https://nicowooow.site/public/Twitter.webp"
+            alt="logo de X/Twitter"
+          />
+        </span>
+        X/Twitter
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://nicowooow.site"
+        title="link to my website"
+        target="_blank"
+      >
+        <span class="icon-wrap">
+          <img
+            src="https://nicowooow.site/public/logo-simple.webp"
+            alt="logo de my website"
+          />
+        </span>
+        My Website
+        </a>
+    </li>
+  </ul>
+  <h2></h2>
+  <p></p>
 </main>
 {% endblock %}

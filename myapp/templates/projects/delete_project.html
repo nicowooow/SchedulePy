@@ -1,7 +1,7 @@
 {% extends 'projects/projects.html' %} 
 {% block vista %}
     <h1>delete a project</h1>
-<form method='POST'>
+<form method='POST' action={% url "delete_project" %} id="deleteProject">
     {% csrf_token %}
     {{form}}
     <input type='submit' value='delete'>
