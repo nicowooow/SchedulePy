@@ -28,7 +28,7 @@ def tasks(request):
     # print(tasks_list)
     # print("----------------------------")
     return render(request, 'tasks/tasks.html', {
-        "page_css": ["css/schedule-projects-tasks.css"],
+        "page_css":["css/schedule-projects-tasks.css","css/schedule.css","css/task.css"],
         "projects": projects,
         "tasks": tasks_list,
     })
@@ -36,33 +36,33 @@ def tasks(request):
 
 @login_required(login_url='sign_in')
 def create_tasks(request):
-    if request.method == 'GET':
-        return render(request,'tasks/create_task.html',{
-            "page_css":["css/schedule-projects-tasks.css","css/forms.css"],
+    if request.method == 'POST':
+        print("post")
+    return render(request,'tasks/create_task.html',{
+            "page_css":["css/schedule-projects-tasks.css","css/forms.css","css/task.css","css/schedule.css"],
             "form":CreateNewTask()
             }
                   )
 
 @login_required(login_url='sign_in')
 def delete_tasks(request):
-    if request.method == 'GET':
-        form = DeleteTask(user=request.user)
-    else :
-        form = DeleteTask(request.POST, user=request.user)
+    if request.method == 'POST':
+        print("post")
+
+    form = DeleteTask(user=request.user)
     return render(request,'tasks/delete_task.html',{
-            "page_css":["css/schedule-projects-tasks.css","css/forms.css"],
+            "page_css":["css/schedule-projects-tasks.css","css/forms.css","css/task.css","css/schedule.css"],
             "form": form
             }
                   )
 
 @login_required(login_url='sign_in')
 def update_tasks(request):
-    if request.method == 'GET':
-        form = UpdateTask(user=request.user)
-    else :
-        form = UpdateTask(request.POST, user=request.user) 
+    if request.method == 'POST':
+        print("post")
+    form = UpdateTask(user=request.user)
     return render(request,'tasks/update_task.html',{
-            "page_css":["css/schedule-projects-tasks.css","css/forms.css"],
+            "page_css":["css/schedule-projects-tasks.css","css/forms.css","css/task.css","css/schedule.css"],
             "form":form
             }
                     )

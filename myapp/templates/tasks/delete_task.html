@@ -1,7 +1,7 @@
 {% extends 'tasks/tasks.html' %} 
 {% block vista %}
     <h1>Delete a task</h1>
-<form method='POST'>
+<form action="{% url 'delete_task'%}" method='POST'>
     {% csrf_token %}
     {{form}}
     <input type='submit' value='delete'>

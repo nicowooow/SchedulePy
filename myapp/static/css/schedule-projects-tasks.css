@@ -1,129 +1,4 @@
-/* ========== RESETEO BÁSICO ========== */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  min-height: 100vh;
-  font-family: var(--font-main);
-  background: var(--color-bg-body);
-  color: var(--color-text-main);
-}
-
-/* ========== LAYOUT PRINCIPAL (SIDEBAR + CONTENIDO) ========== */
-main {
-  display: flex;
-  align-items: flex-start;
-  gap: 1.5rem;
-  max-width: 1200px;
-  margin: 1.5rem auto 2.5rem;
-  padding: 0 1.5rem;
-}
-
-/* Sidebar */
-main > aside {
-  width: 210px;
-  flex-shrink: 0;
-  padding: 1.3rem 1rem;
-  border-radius: 22px;
-  background: var(--color-glass-bg-strong);
-  border: 1px solid var(--color-glass-border-strong);
-  box-shadow: var(--shadow-sidebar);
-  backdrop-filter: blur(18px);
-}
-
-main > aside ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-main > aside li a {
-  display: block;
-  padding: 0.55rem 0.75rem;
-  border-radius: var(--radius-pill);
-  text-decoration: none;
-  color: var(--color-text-main);
-  font-size: 0.9rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  opacity: 0.85;
-  transition:
-    background 0.18s ease,
-    color 0.18s ease,
-    transform 0.1s ease;
-}
-
-main > aside li a:hover {
-  background: rgba(37, 99, 235, 0.35);
-  color: #f9fafb;
-  transform: translateX(2px);
-}
-
-main > aside li a.active {
-  background: var(--button-gradient);
-  color: #020617;
-  box-shadow: 0 10px 28px rgba(56, 189, 248, 0.7);
-  opacity: 1;
-}
-
-/* Contenedor principal de contenido (Schedule / Projects / Tasks) */
-main > section {
-  flex: 1;
-  padding: 1.4rem 1.2rem 1.6rem;
-  border-radius: var(--radius-card-lg);
-  background: var(--color-glass-bg);
-  border: 1px solid var(--color-glass-border);
-box-shadow: var(--shadow-strong);
-  backdrop-filter: blur(20px);
-}
-
-/* Título y descripción generales dentro de main > section */
-main > section > h1 {
-  font-size: 1.6rem;
-  margin-bottom: 0.25rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-main > section > p {
-  font-size: 0.95rem;
-  color: var(--color-text-muted);
-  margin-bottom: 1.4rem;
-}
-
-/* Tarjetas genéricas (Schedule: proyectos + tareas) */
-main > section > div {
-  margin-bottom: 1rem;
-  padding: 0.9rem 1rem;
-  border-radius: var(--radius-card-sm);
-  background: var(--color-card-bg);
-  border: 1px solid var(--color-card-border);
-}
-
-main > section > div h1 {
-  font-size: 1.05rem;
-  margin-bottom: 0.45rem;
-}
-
-main > section > div p {
-  font-size: 0.9rem;
-  color: var(--color-text-soft);
-}
-
-/* Texto de fecha (Schedule: Started / created at) */
-main > section > div .date,main > .content >section > div .date {
-  font-size: 0.85rem;
-  margin-bottom: 0.35rem;
-  color: #acfca5 !important;
-  opacity: 0.9;
-}
-/* ========== CABECERA PROJECTS / TASKS (iconos + tabs) ========== */
-/* usar <section class="content content_projects"> o content_tasks */
-
+/* Cabecera dentro de .content (título + tabs) */
 .content > section:first-of-type {
   display: flex;
   align-items: center;
@@ -138,7 +13,7 @@ main > section > div .date,main > .content >section > div .date {
   text-transform: uppercase;
 }
 
-/* enlace + icono */
+/* Tabs (all, create, delete, update) */
 .content > section:first-of-type a {
   display: inline-flex;
   align-items: center;
@@ -163,7 +38,7 @@ main > section > div .date,main > .content >section > div .date {
   height: 18px;
 }
 
-/* colores por acción (all, create, delete, update) */
+/* Colores por acción */
 .content > section:first-of-type a:nth-of-type(1) {
   color: var(--color-accent-blue);
   border: 1px solid rgba(56, 189, 248, 0.7);
@@ -191,13 +66,12 @@ main > section > div .date,main > .content >section > div .date {
   box-shadow: 0 10px 26px rgba(15, 23, 42, 0.9);
 }
 
-/* ========== LISTA PROJECTS / TASKS (cards) ========== */
-
+/* Sección de lista (projects/tasks) */
 .content > section:last-of-type {
   margin-top: 0.5rem;
 }
 
-/* cards por defecto */
+/* Cards genéricas dentro de la lista */
 .content > section:last-of-type > div {
   margin-bottom: 1rem;
   padding: 0.9rem 1rem;
@@ -211,7 +85,6 @@ main > section > div .date,main > .content >section > div .date {
   margin-bottom: 0.35rem;
 }
 
-/* subtítulo para Tasks: nombre de proyecto */
 .content > section:last-of-type > div h2 {
   font-size: 0.95rem;
   margin-bottom: 0.25rem;
@@ -223,13 +96,22 @@ main > section > div .date,main > .content >section > div .date {
   color: var(--color-text-soft);
 }
 
-/* ========== FORMULARIOS EN PROJECTS / TASKS ========== */
-
-.toggle-btn:hover {
-  background: rgba(37, 99, 235, 0.35);
+/* Fechas genéricas */
+.date {
+  font-size: 0.85rem;
+  margin-bottom: 0.15rem;
+  color: #acfca5 !important;
+  opacity: 0.9;
 }
 
+.due_date {
+  font-size: 0.85rem;
+  margin-bottom: 0.05rem;
+  color: #fcd8a5 !important;
+  opacity: 0.9;
+}
 
+/* Formularios create/update (Projects y Tasks) */
 .content > section:last-of-type form {
   max-width: 520px;
   margin-top: 0.6rem;
@@ -252,6 +134,7 @@ main > section > div .date,main > .content >section > div .date {
 }
 
 .content form input[type="text"],
+.content form input[type="date"],
 .content form textarea,
 .content form select {
   width: 100%;
@@ -283,7 +166,7 @@ main > section > div .date,main > .content >section > div .date {
   transform: translateY(-1px);
 }
 
-/* botón submit */
+/* Submit */
 .content form input[type="submit"] {
   margin-top: 0.7rem;
   align-self: flex-start;
@@ -308,71 +191,4 @@ main > section > div .date,main > .content >section > div .date {
   filter: brightness(1.06);
   transform: translateY(-1px);
   box-shadow: 0 18px 40px rgba(56, 189, 248, 0.85);
-}
-
-/* contenedor título + botón en Tasks */
-.content > section:last-of-type > div > div {
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-between; /* separa título y botón */
-  gap: 0.75rem;
-  margin-bottom: 0.35rem;
-}
-
-/* título dentro de ese contenedor */
-.content > section:last-of-type > div > div h1 {
-  font-size: 1.05rem;
-  margin: 0;
-}
-
-/* botón toggle */
-.toggle-btn {
-  display: inline-block;
-  padding: 0.25rem 0.9rem;
-  border-radius: var(--radius-pill);
-  border: 1px solid rgba(148, 163, 184, 0.7);
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  text-decoration: none;
-  color: var(--color-text-main);
-  background: var(--color-glass-bg-strong);
-  cursor: pointer;
-  transition:
-    background 0.18s ease,
-    color 0.18s ease,
-    transform 0.1s ease,
-    box-shadow 0.18s ease;
-}
-
-.toggle-btn:hover {
-  background: rgba(37, 99, 235, 0.35);
-  color: #f9fafb;
-  transform: translateY(-1px);
-  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.9);
-}
-
-
-/* ========== RESPONSIVE ========== */
-@media (max-width: 900px) {
-  main {
-    flex-direction: column;
-    padding: 0 1rem;
-  }
-
-  main > aside {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-
-  main > aside ul {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  main > section {
-    width: 100%;
-  }
 }

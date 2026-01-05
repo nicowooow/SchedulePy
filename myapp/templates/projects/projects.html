@@ -65,18 +65,23 @@
     <section>
       {% block vista %}
         {% for project in projects %}
-            <div>
-              <h1>{{project.title}} - {% if project.done == False%}no completed ❌
+          <div class="project-card">
+            <div class="project-header">
+              <h1>
+                {{ project.title }} -
+                {% if not project.done %}no completed ❌
                 {% else %}completed ✔
                 {% endif %}
               </h1>
-              <p>{{project.description}}</p>
-              <p class="date">created at : {{project.created_at}}</p>
+              <p>{{ project.description }}</p>
+              <p class="date">created at : {{ project.created_at }}</p>
+              <p class="due_date">due date : {{ project.date }}</p>
             </div>
+          </div>
         {% endfor %}
-      
       {% endblock %}
     </section>
+
   </section>
 </main>
 {% endblock %}

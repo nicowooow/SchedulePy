@@ -1,32 +1,61 @@
 {% extends 'layouts/header.html' %}
+{% load static %}
+
 {% block title %}Schedule{% endblock %}
+{% block extra_css %}
+  {% if page_css %}
+    {% for css in page_css %}
+      <link rel="stylesheet" href="{% static css %}">
+    {% endfor %}
+  {% endif %}
+{% endblock %}
 {% block content %}
 <main>
-  <aside>
+  <aside class="menu_schedule">
     <ul>
       <li><a href="/schedule/">Schedule</a></li>
       <li><a href="/schedule/projects/">Projects</a></li>
       <li><a href="/schedule/projects/tasks/">Tasks</a></li>
     </ul>
   </aside>
-  <section>
-    <h1>Schedule</h1>
-    <p>Here you can see your activities in a schedule</p>
-    {% for project in projects %}
-    <div>
-      <h1>
-        {{project.title}} - {% if not project.done %} project pending ⏰ 
-        {% else %}
-        project done ✅
-        {% endif %}
-      </h1>
+<section class="content">
+    <section>
+      <h1>Schedule</h1>
+      <p>Here you can see your activities in a schedule</p>
+    </section>
 
-      {% for task in tasks %} {% if task.project_id == project.id %}
-      <p>{{task.title}}</p>
-      {% endif %} {% endfor %}
-      <p class="date">Started : {{project.created_at}}</p>
-    </div>
-    {% endfor %}
+    <section>
+      {% for project in projects %}
+        <div class="project-card">
+          <div class="project-header">
+            <h1>
+              {{ project.title }} -
+              {% if project.done %}project done ✅{% else %}project pending ⏰{% endif %}
+            </h1>
+            <p>{{ project.description }}</p>
+            <p class="date">
+              Started : {{ project.date }}
+            </p>
+          </div>
+
+          <div class="project-tasks">
+            {% if project.task_set.all %}
+              <ul>
+                {% for task in project.task_set.all %}
+                  <li>
+                    <span class="task-dot"></span>
+                    <span class="task-title">{{ task.title }}</span>
+                    <span class="task-status">{{ task.status }}</span>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% else %}
+              <span class="no-tasks">No tasks</span>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </section>
   </section>
 </main>
 {% endblock %}
