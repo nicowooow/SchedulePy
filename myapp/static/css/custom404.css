@@ -1,0 +1,41 @@
+/* Contenedor principal del 404 */
+main {
+  max-width: 600px;
+  margin: 80px auto;
+  padding: 40px 30px;
+  border-radius: 12px;
+  background-color: #111827;   /* gris muy oscuro */
+  color: #e5e7eb;              /* gris claro */
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Título grande */
+main h1 {
+  font-size: 4rem;
+  margin-bottom: 10px;
+  letter-spacing: 0.1em;
+}
+
+/* Texto */
+main p {
+  margin-bottom: 24px;
+  font-size: 1.1rem;
+}
+
+/* Enlace para volver */
+main a {
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 999px;
+  background-color: #2563eb;
+  color: #f9fafb;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+main a:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-1px);
+}

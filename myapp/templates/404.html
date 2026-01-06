@@ -1,0 +1,17 @@
+{% extends 'layouts/header.html' %} 
+{% load static %}
+{% block title %}Page not found{% endblock %}
+
+{% block extra_css %}
+  {% if page_css %}
+      <link rel="stylesheet" href="{% static page_css %}">
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+<main>
+    <h1>404</h1>
+    <p>This page was not found or has been moved.</p>
+    <a href="{% url 'home' %}">return home</a>
+</main>
+{% endblock %}

@@ -4,4 +4,4 @@ from myapp.views.profiles import profile
 from myapp.views.projects import create_projects,update_projects,delete_projects,projects
 from myapp.views.schedule import schedule
 from myapp.views.tasks import tasks,create_tasks,delete_tasks,update_tasks,toggle_task_done
-from myapp.views.robots import robots_txt
+from myapp.views.web import robots_txt,simple_sitemap,custom_404

@@ -16,14 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from myapp import views as myapp_views
 # con include importamos las rutas de la aplicacion myapp
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
     #cree un usuario con el python manage.py createsuperuser
     #nombre nicolas
     #contraseña passwdnico
     path('', include('myapp.urls')),
 ]
 # la ruta vacia '' indica que cualquier ruta que no sea admin/ sera manejada por myapp.urls
+
+handler404 = myapp_views.custom_404

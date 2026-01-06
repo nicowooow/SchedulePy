@@ -20,6 +20,7 @@ urlpatterns = [
     path('schedule/projects/tasks/update/',views.update_tasks, name="update_task"),
     path('schedule/tasks/<int:task_id>/toggle/',views.toggle_task_done,name='toggle_task_done'),
     path('robots.txt',views.robots_txt, name="robots"),
+    path('simple_sitemap.xml',views.simple_sitemap, name="simple_sitemap"),
     path('sign-in/',views.sign_in, name="sign_in"),
     path('sign-up/',views.sign_up, name="sign_up"),
     path('out-log/',views.log_out, name="log_out"),
