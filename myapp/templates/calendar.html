@@ -8,6 +8,9 @@
   <h1>Calendar Profile</h1>
   <p>Here you can see your activities in a calendar</p>
   <div id="calendar"> </div>
+  <script>
+    let tasks_per_day = {{tasks_per_day|safe }}
+  </script>
   <script src="{% static "js/calendar.js" %}"></script>
 </main>
 {% endblock %}

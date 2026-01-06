@@ -1,9 +1,13 @@
 {% extends 'tasks/tasks.html' %} 
 {% block vista %}
-    <h1>Update a task</h1>
-<form action="{% url 'update_task'%}" method='POST'>
-    {% csrf_token %}
-    {{form}}
-    <input type='submit' value='update'>
-</form> 
+<div class="update_task">
+    <div class="update_all">
+        <h1>Update a task</h1>
+        <form action="{% url 'update_task'%}" method='POST'>
+            {% csrf_token %}
+            {{form}}
+            <input type='submit' value='update'>
+        </form> 
+    </div>
+</div>
 {% endblock %}

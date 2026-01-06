@@ -1,6 +1,5 @@
-from myapp import views
 from django.urls import path
-from myapp.views import *
+from . import views
 #al poner el . haces referencia al directorio actual
 # from myapp.views import home
 #traes la vista home desde myapp.views
@@ -20,8 +19,9 @@ urlpatterns = [
     path('schedule/projects/tasks/delete/',views.delete_tasks, name="delete_task"),
     path('schedule/projects/tasks/update/',views.update_tasks, name="update_task"),
     path('schedule/tasks/<int:task_id>/toggle/',views.toggle_task_done,name='toggle_task_done'),
-    path('profile/',views.profile, name="profile"),
     path('sign-in/',views.sign_in, name="sign_in"),
     path('sign-up/',views.sign_up, name="sign_up"),
     path('out-log/',views.log_out, name="log_out"),
 ]
+
+    # path('profile/',views.profile, name="profile"),

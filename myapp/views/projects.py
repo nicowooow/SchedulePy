@@ -30,56 +30,101 @@ def projects(request):
     
 @login_required(login_url='sign_in')
 def create_projects(request):
-    print('METHOD =>', request.method)
-    print('PATH   =>', request.path)
-    print('POST   =>', request.POST)
-    
-    if request.method == 'POST':
-        title = request.POST['title']
-        description = request.POST['description']
-        date = request.POST['date']
-        done = False
-        profile = request.user.profile
-        Project.objects.create(title =title,description =description,done =done,date =date,profile =profile)
-        return redirect('project')  
-    return render(request,'projects/create_project.html',{
-            "page_css":["css/schedule-projects-tasks.css","css/forms.css", "css/schedule.css"],
-            "form":CreateNewProject()
-            })
+    if request.method == "POST":
+        form = CreateNewProject(request.POST)
+        if form.is_valid():
+            Project.objects.create(
+                title=form.cleaned_data["title"],
+                description=form.cleaned_data["description"],
+                date=form.cleaned_data["date"],
+                done=False,
+                profile=request.user.profile,
+            )
+            return redirect("project")
+    else:
+        form = CreateNewProject()
+
+    return render(
+        request,
+        "projects/create_project.html",
+        {
+            "page_css": [
+                "css/schedule-projects-tasks.css",
+                "css/forms.css",
+                "css/schedule.css",
+            ],
+            "form": form,
+        },
+    )
         
 @login_required(login_url='sign_in')
 def delete_projects(request):
-    if request.method == 'POST':
-        project_id = request.POST['project']
-        project = get_object_or_404(
-            Project,
-            id=project_id,
-            profile=request.user.profile
-        )
-        project.delete()
-        
-    return render(request,'projects/delete_project.html',{
-            "page_css":["css/schedule-projects-tasks.css","css/forms.css","css/schedule.css"],
-            "form":DeleteProject(user = request.user)
-            })
-        
+    if request.method == "POST":
+        form = DeleteProject(request.POST, user=request.user)
+        if form.is_valid():
+            project = form.cleaned_data["project"]  # ModelChoiceField
+            # extra seguridad: asegurar que pertenece al usuario
+            project = get_object_or_404(
+                Project,
+                id=project.id,
+                profile=request.user.profile,
+            )
+            project.delete()
+            return redirect("project")
+    else:
+        form = DeleteProject(user=request.user)
+
+    return render(
+        request,
+        "projects/delete_project.html",
+        {
+            "page_css": [
+                "css/schedule-projects-tasks.css",
+                "css/forms.css",
+                "css/schedule.css",
+            ],
+            "form": form,
+        },
+    )
+     
 @login_required(login_url='sign_in')
 def update_projects(request):
-    if request.method == 'POST':
-        
-        project = get_object_or_404(
-        Project,
-        id=request.POST['project'],
-        profile=request.user.profile,
+    if request.method == "POST":
+        form = UpdateProject(request.POST, user=request.user)
+        if form.is_valid():
+            project = form.cleaned_data["project"]
+            project = get_object_or_404(
+                Project,
+                id=project.id,
+                profile=request.user.profile,
             )
-        project.title = request.POST['title']
-        project.description = request.POST['description']
-        project.date = request.POST['date']  # si es DateField, mejor validarlo con un form
-        project.save()
-        return redirect('project')
-        
-    
-    return render(request,'projects/update_project.html',{
-            "page_css":["css/schedule-projects-tasks.css","css/forms.css","css/schedule.css"],
-            "form":UpdateProject(user=request.user)
-            })
+            # patch: solo cambio si el campo no viene vacío
+            title = form.cleaned_data.get("title")
+            if title:
+                project.title = title
+
+            description = form.cleaned_data.get("description")
+            if description:
+                project.description = description
+
+            date = form.cleaned_data.get("date")
+            if date is not None:
+                project.date = date
+            project.save()
+
+            return redirect("project")
+    else:
+        form = UpdateProject(user=request.user)
+
+    return render(
+        request,
+        "projects/update_project.html",
+        {
+            "page_css": [
+                "css/schedule-projects-tasks.css",
+                "css/forms.css",
+                "css/schedule.css",
+            ],
+            "form": form,
+        },
+    )

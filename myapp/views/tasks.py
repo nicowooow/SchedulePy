@@ -36,42 +36,108 @@ def tasks(request):
 
 @login_required(login_url='sign_in')
 def create_tasks(request):
-    if request.method == 'POST':
-        print("post")
-    return render(request,'tasks/create_task.html',{
-            "page_css":["css/schedule-projects-tasks.css","css/forms.css","css/task.css","css/schedule.css"],
-            "form":CreateNewTask()
-            }
-                  )
+    if request.method == "POST":
+        form = CreateNewTask(request.POST, user=request.user)
+        if form.is_valid():
+            project = get_object_or_404(
+                Project,
+                id=form.cleaned_data["project"].id,
+                profile=request.user.profile,
+            )
+
+            Task.objects.create(
+                title=form.cleaned_data["title"],
+                description=form.cleaned_data["description"],
+                status="TODO",
+                project=project,
+            )
+            return redirect("task")
+    else:
+        form = CreateNewTask(user=request.user)
+
+    return render(
+        request,
+        'tasks/create_task.html',
+        {
+            "page_css": ["css/schedule-projects-tasks.css", "css/forms.css", "css/task.css", "css/schedule.css"],
+            "form": form,
+        },
+    )
+
 
 @login_required(login_url='sign_in')
 def delete_tasks(request):
-    if request.method == 'POST':
-        print("post")
+    if request.method == "POST":
+        form = DeleteTask(request.POST, user=request.user)
+        if form.is_valid():
+            task = form.cleaned_data["task"]  # ModelChoiceField en DeleteTask
+            task = get_object_or_404(
+                Task,
+                id=task.id,
+                project__profile=request.user.profile,
+            )
+            task.delete()
+            return redirect("task")
+    else:
+        form = DeleteTask(user=request.user)
 
-    form = DeleteTask(user=request.user)
-    return render(request,'tasks/delete_task.html',{
-            "page_css":["css/schedule-projects-tasks.css","css/forms.css","css/task.css","css/schedule.css"],
-            "form": form
-            }
-                  )
+    return render(
+        request,
+        'tasks/delete_task.html',
+        {
+            "page_css": ["css/schedule-projects-tasks.css", "css/forms.css", "css/task.css", "css/schedule.css"],
+            "form": form,
+        },
+    )
+
 
 @login_required(login_url='sign_in')
 def update_tasks(request):
-    if request.method == 'POST':
-        print("post")
-    form = UpdateTask(user=request.user)
-    return render(request,'tasks/update_task.html',{
-            "page_css":["css/schedule-projects-tasks.css","css/forms.css","css/task.css","css/schedule.css"],
-            "form":form
-            }
-                    )
+    if request.method == "POST":
+        form = UpdateTask(request.POST, user=request.user)
+        if form.is_valid():
+            task_obj = form.cleaned_data["task"]
+            task = get_object_or_404(
+                Task,
+                id=task_obj.id,
+                project__profile=request.user.profile,
+            )
+
+            # patch: solo actualiza si viene valor
+            title = form.cleaned_data.get("title")
+            if title:
+                task.title = title
+
+            description = form.cleaned_data.get("description")
+            if description:
+                task.description = description
+
+            status = form.cleaned_data.get("status")
+            if status:
+                task.status = status
+
+            task.save()
+            return redirect("task")
+    else:
+        form = UpdateTask(user=request.user)
+
+    return render(
+        request,
+        'tasks/update_task.html',
+        {
+            "page_css": ["css/schedule-projects-tasks.css", "css/forms.css", "css/task.css", "css/schedule.css"],
+            "form": form,
+        },
+    )
+
+    
 @login_required(login_url='sign_in')
 def toggle_task_done(request, task_id):
     task = get_object_or_404(Task, id=task_id)
 
     # cambiar estado de la tarea
     task.done = not task.done
+    task.status = "COMPLETED" if task.done else "TODO"
     task.save()
 
     project = task.project  # FK

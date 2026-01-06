@@ -28,7 +28,7 @@
         <section>
           <ul>
             {% if request.user.is_authenticated %}
-              <li><a href="{% url 'profile' %}" class="{% if request.path == '/profile' %}active{% endif %}" >profile</a></li>
+              {% comment %} <li><a href="{% url 'profile' %}" class="{% if request.path == '/profile' %}active{% endif %}" >profile</a></li> {% endcomment %}
               <li><a href="{% url 'log_out' %}" class="{% if request.path == '/log-out' %}active{% endif %}" >log-out</a></li>
             {% else %}
               <li><a href="{% url 'sign_in' %}" class="{% if request.path == '/sign-in' %}active{% endif %}" >Sign in</a></li>

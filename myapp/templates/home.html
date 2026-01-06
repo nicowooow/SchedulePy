@@ -41,8 +41,11 @@
   {% endif %}
   {% if last_project %}
   <h3>Continue with your last project</h3>
-  <p>{{ last_project.title }}</p>
-  <a href="{% url 'task' %}">Go to its tasks</a>
+  <p> title : {{ last_project.title }}</p>
+  <br>
+  <ul>
+    <li><a href="{% url 'task' %}">Go to its tasks</a></li>
+  <ul>
   {% endif %}
 
 

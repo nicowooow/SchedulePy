@@ -5,52 +5,45 @@ function getDaysInMonth(year, monthIndex) {
   //pero funciona traendo el ultimo dia del mes anterior
 }
 
-function createCalendar(totalDays, startWeekDay, currentDay) {
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
+function createCalendar(totalDays, startWeekDay, currentDay, year, monthIndex, tasksPerDay) {
+  let days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
   let calendar = "<table>";
 
   calendar += "<thead>";
-  // bucle para poner las cabeceras(dias de la semana)
   for (let i = 0; i < days.length; i++) {
     calendar += "<th>" + days[i] + "</th>";
   }
   calendar += "</thead>";
-  // bucle para poner los dias
 
   calendar += "</tbody>";
-  let day = 1; // contador de días del mes
-  // 5 filas (semanas)
+  let day = 1;
+
   for (let row = 0; row < 5; row++) {
     calendar += "<tr>";
-    // 7 columnas (días de la semana)
     for (let col = 0; col < 7; col++) {
-      // primera fila: rellena huecos antes del día 1
       if (row === 0 && col < startWeekDay) {
         calendar += "<td></td>";
       } else if (day > totalDays) {
-        // después del último día: celdas vacías
         calendar += "<td></td>";
       } else {
-        let content = day === currentDay ? " class='today'>today" : ">"+day;
+        const month = String(monthIndex + 1).padStart(2, "0");
+        const dayStr = String(day).padStart(2, "0");
+        const key = `${year}-${month}-${dayStr}`;
+        const count = tasksPerDay[key] || 0;
+
+        let content =
+          day === currentDay
+            ? ` class='today'>${day}<br><span>${count} tasks</span>`
+            : `>${day}<br><span>${count} tasks</span>`;
+
         calendar += "<td" + content + "</td>";
         day++;
       }
     }
-
     calendar += "</tr>";
   }
 
   calendar += "</tbody></table>";
-//   console.log(calendar);
-
   return calendar;
 }
 
@@ -61,14 +54,19 @@ window.addEventListener("DOMContentLoaded", () => {
   let currentMonth = currentDate.getMonth();
   let currentDay = currentDate.getDate();
 
-  
   let daysInMonth = getDaysInMonth(currentYear, currentMonth);
-  let table = createCalendar(daysInMonth, currentDay, currentDay);
-  divCalendar.innerHTML = table;
 
-  //   console.log(currentDate);
-  //   console.log(currentYear);
-  //   console.log(currentMonth);
-  //   console.log(currentDay);
-  //   console.log(daysInMonth);
+  // día de la semana del día 1 del mes actual
+  let firstDayWeekIndex = new Date(currentYear, currentMonth, 1).getDay();
+
+  let table = createCalendar(
+    daysInMonth,
+    firstDayWeekIndex,
+    currentDay,
+    currentYear,
+    currentMonth,
+    tasks_per_day   // o TASKS_PER_DAY, según el nombre que uses
+  );
+  divCalendar.innerHTML = table;
 });
+

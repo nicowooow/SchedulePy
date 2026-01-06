@@ -65,12 +65,13 @@
     <section>
     {% block vista %}
       {% for task in tasks %}
-            <div>
-              <div>
-                <h1>{{task.title}} - {% if task.done == False%}no completed ❌
+            <div class="task-card">
+              <div class="task-card-header">
+                <h1>{{task.title}} - {% if task.done == False %}no completed ❌
                   {% else %}completed ✔
                   {% endif %}
                 </h1>
+                <h6>{{task.status}}</h6>
                 <a href="{% url 'toggle_task_done' task.id %}" class="toggle-btn">
                   {% if task.done %}Mark as pending{% else %}Mark as done{% endif %}
                 </a>
