@@ -3,16 +3,35 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
+    <!-- TITULO DE LA PAGINA -->
     <title>{% block title %}{% endblock %}</title>
+    <!-- CSS BASE -->
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
     <link rel="stylesheet" href="{% static 'css/header.css' %}" />
+    <!-- LOGO DE LA PAGINA -->
     <link rel="icon" type="image/x-icon" href="{% static "images/logo.ico" %}">
-
+    
+    <!-- CSS ADICIONALES -->
     {% block extra_css %} 
       {% if page_css %}
         <link rel="stylesheet" href="{% static page_css %}" />
       {% endif %} 
     {% endblock %}
+    <!-- -->
+
+    <!-- META -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+      content="SchedulePy es una app web para crear proyectos, tareas y calendarios, y tener tus actividades organizadas en un solo lugar." />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Opcional: para compartirse bien en redes -->
+    <meta property="og:title" content="SchedulePy – Organiza tus proyectos y tareas" />
+    <meta property="og:description"
+          content="Crea proyectos, tareas y calendarios en SchedulePy y mantén tus actividades al día." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://schedulepy.nicowooow.site/" />
+    <meta property="og:image" content="https://schedulepy.nicowooow.site/static/img/preview.png" />
+    <meta name="twitter:card" content="summary_large_image" />
   </head>
   <body>
     <header>
