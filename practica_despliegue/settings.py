@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-jwkn8=2febkzk@zcdfq2=nx3()=@rs7=$-7h5ge_2$3aj!2fm0
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-
+ 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "schedulepy.nicowooow.site"]
 
 
