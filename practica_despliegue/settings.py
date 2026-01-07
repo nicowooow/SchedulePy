@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-jwkn8=2febkzk@zcdfq2=nx3()=@rs7=$-7h5ge_2$3aj!2fm0
 DEBUG = False
  
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "schedulepy.nicowooow.site"]
+CSRF_TRUSTED_ORIGINS = ["localhost", "127.0.0.1","https://schedulepy.nicowooow.site","http://schedulepy.nicowooow.site"]
 
 
 # Application definition
@@ -116,3 +117,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = '/static/'
+# para el cerificado csrf
