@@ -6,8 +6,19 @@ from django.contrib.auth.decorators import login_required
 def profile(request):
     user = request.user
     profile = user.profile
+    description = "perfil del usaurio."
+    og_title="Profile"
+    og_description="algo simple para el perfil del usuario."
+    og_url=request.build_absolute_uri()
+    og_image="https://schedulepy.nicowooow.site/static/images/logo.svg"
+    
     return render(request,'profile.html',{
         "user":user,
-        "profile":profile
+        "profile":profile,
+        "og_title":og_title,
+        "description":description,
+        "og_description":og_description,
+        "og_url":og_url,
+        "og_image":og_image,
         
     })

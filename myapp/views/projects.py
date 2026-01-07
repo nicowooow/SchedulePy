@@ -6,6 +6,13 @@ from myapp.models import Profile,Project,Task
 from myapp.forms import CreateNewProject,DeleteProject,UpdateProject
 
 def projects(request):
+
+    description = "Apartado donde el usuario puede ver las Proyectos que tiene."
+    og_title="Projects"
+    og_description="Apartado donde el usuario puede ver las Proyectos que tiene."
+    og_url=request.build_absolute_uri()
+    og_image="https://schedulepy.nicowooow.site/static/images/logo.svg"
+    
     if request.user.is_authenticated:
         try:
             profile = Profile.objects.get(user=request.user)
@@ -26,10 +33,21 @@ def projects(request):
     return render(request,'projects/projects.html',{
         "page_css": ["css/schedule-projects-tasks.css", "css/forms.css", "css/schedule.css"],
         "projects":projects,
+        "og_title":og_title,
+        "description":description,
+        "og_description":og_description,
+        "og_url":og_url,
+        "og_image":og_image,
         })
     
 @login_required(login_url='sign_in')
 def create_projects(request):
+    description = "Apartado donde el usuario puede crear nuevos proyecto."
+    og_title="Create Project"
+    og_description="Apartado donde el usuario puede crear nuevos proyecto."
+    og_url=request.build_absolute_uri()
+    og_image="https://schedulepy.nicowooow.site/static/images/logo.svg"
+
     if request.method == "POST":
         form = CreateNewProject(request.POST)
         if form.is_valid():
@@ -54,11 +72,23 @@ def create_projects(request):
                 "css/schedule.css",
             ],
             "form": form,
+        "og_title":og_title,
+        "description":description,
+        "og_description":og_description,
+        "og_url":og_url,
+        "og_image":og_image,
         },
     )
         
 @login_required(login_url='sign_in')
 def delete_projects(request):
+    description = "Apartado donde el usuario puede eliminar los proyectos que haiga completado o no necesite."
+    og_title="Delete Project"
+    og_description="Apartado donde el usuario puede eliminar los proyectos que haiga completado o no necesite."
+    og_url=request.build_absolute_uri()
+    og_image="https://schedulepy.nicowooow.site/static/images/logo.svg"
+
+
     if request.method == "POST":
         form = DeleteProject(request.POST, user=request.user)
         if form.is_valid():
@@ -84,11 +114,23 @@ def delete_projects(request):
                 "css/schedule.css",
             ],
             "form": form,
+        "og_title":og_title,
+        "description":description,
+        "og_description":og_description,
+        "og_url":og_url,
+        "og_image":og_image,
         },
     )
      
 @login_required(login_url='sign_in')
 def update_projects(request):
+    description = "Apartado donde el usuario puede actualizar el contenido de una proyecto seleccionada."
+    og_title="Update Project"
+    og_description="Apartado donde el usuario puede actualizar el contenido de una proyecto seleccionada."
+    og_url=request.build_absolute_uri()
+    og_image="https://schedulepy.nicowooow.site/static/images/logo.svg"
+
+
     if request.method == "POST":
         form = UpdateProject(request.POST, user=request.user)
         if form.is_valid():
@@ -126,5 +168,10 @@ def update_projects(request):
                 "css/schedule.css",
             ],
             "form": form,
+        "og_title":og_title,
+        "description":description,
+        "og_description":og_description,
+        "og_url":og_url,
+        "og_image":og_image,
         },
     )

@@ -4,9 +4,21 @@ from django.shortcuts import  render , redirect
 from  myapp.models import Profile
 
 def sign_in(request):
+    description = "Pagina de inicio de sesión."
+    og_title="Sing in"
+    og_description="Pagina de inicio de sesión."
+    og_url=request.build_absolute_uri()
+    og_image="https://schedulepy.nicowooow.site/static/images/logo.svg"
+     
     context = {
         "page_css":"css/sign.css",
-        "action": ""
+        "action": "",
+        "og_title":og_title,
+        "description":description,
+        "og_description":og_description,
+        "og_url":og_url,
+        "og_image":og_image,
+        
         }
     if request.method == 'POST':
         username_email = request.POST['username_email']
@@ -28,9 +40,21 @@ def sign_in(request):
     return render(request,"signs/sign-in.html",context)
 
 def sign_up(request):
+    description = "Pagina de registro."
+    og_title="Sign up"
+    og_description="Pagina de registro."
+    og_url=request.build_absolute_uri()
+    og_image="https://schedulepy.nicowooow.site/static/images/logo.svg"
+     
     context = {
         "page_css":"css/sign.css",
-        "action": ""
+        "action": "",
+        "og_title":og_title,
+        "description":description,
+        "og_description":og_description,
+        "og_url":og_url,
+        "og_image":og_image,
+        
         }
     if request.method == "POST":
         username = request.POST['username']

@@ -1,8 +1,16 @@
-{% extends 'layouts/header.html' %} {% load static %} {% block extra_css %} {%if page_css %} {% for css in page_css %}
-<link rel="stylesheet" href="{% static css %}" />
-{% endfor %} {% endif %} {% endblock %} {% block content %}
+{% extends 'layouts/header.html' %} 
+{% load static %} 
+{% block title %} About {% endblock %}
+  {% block extra_css %} 
+    {%if page_css %} 
+      {% for css in page_css %}
+        <link rel="stylesheet" href="{% static css %}" />
+      {% endfor %} 
+    {% endif %} 
+  {% endblock %} 
+{% block content %}
 <main>
-  <h1>About us</h1>
+  <h1>About me</h1>
   <p>
     Welcome! This page is part of a learning project where I built a small CRUD
     app to practice Django and front‑end skills.

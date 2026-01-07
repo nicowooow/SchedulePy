@@ -4,6 +4,12 @@ from myapp.models import *
 from myapp.forms import CreateNewTask,UpdateTask,DeleteTask
 
 def tasks(request):
+    description = "Apartado donde el usuario puede ver las Tareas que tiene."
+    og_title="Tasks"
+    og_description="Apartado donde el usuario puede ver las Tareas que tiene."
+    og_url=request.build_absolute_uri()
+    og_image="https://schedulepy.nicowooow.site/static/images/logo.svg"
+    
     if request.user.is_authenticated:
         try:
             profile = Profile.objects.get(user=request.user)
@@ -31,11 +37,23 @@ def tasks(request):
         "page_css":["css/schedule-projects-tasks.css","css/schedule.css","css/task.css"],
         "projects": projects,
         "tasks": tasks_list,
+        "og_title":og_title,
+        "description":description,
+        "og_description":og_description,
+        "og_url":og_url,
+        "og_image":og_image,
+        
     })
     
 
 @login_required(login_url='sign_in')
 def create_tasks(request):
+    description = "Apartado donde el usuario puede crear nuevas tareas, relacionandolo con un proyecto."
+    og_title="Create Tasks"
+    og_description="Apartado donde el usuario puede crear nuevas tareas, relacionandolo con un proyecto."
+    og_url=request.build_absolute_uri()
+    
+    og_image="https://schedulepy.nicowooow.site/static/images/logo.svg"
     if request.method == "POST":
         form = CreateNewTask(request.POST, user=request.user)
         if form.is_valid():
@@ -61,12 +79,23 @@ def create_tasks(request):
         {
             "page_css": ["css/schedule-projects-tasks.css", "css/forms.css", "css/task.css", "css/schedule.css"],
             "form": form,
+        "og_title":og_title,
+        "description":description,
+        "og_description":og_description,
+        "og_url":og_url,
+        "og_image":og_image,
+        
         },
     )
 
 
 @login_required(login_url='sign_in')
 def delete_tasks(request):
+    description = "Apartado donde el usuario puede eliminar las tareas que haiga completado o no necesite."
+    og_title="Delete Tasks"
+    og_description="Apartado donde el usuario puede eliminar las tareas que haiga completado o no necesite."
+    og_url=request.build_absolute_uri()
+    og_image="https://schedulepy.nicowooow.site/static/images/logo.svg"
     if request.method == "POST":
         form = DeleteTask(request.POST, user=request.user)
         if form.is_valid():
@@ -87,12 +116,23 @@ def delete_tasks(request):
         {
             "page_css": ["css/schedule-projects-tasks.css", "css/forms.css", "css/task.css", "css/schedule.css"],
             "form": form,
+        "og_title":og_title,
+        "description":description,
+        "og_description":og_description,
+        "og_url":og_url,
+        "og_image":og_image,
+        
         },
     )
 
 
 @login_required(login_url='sign_in')
 def update_tasks(request):
+    description = "Apartado donde el usuario puede actualizar el contenido de una tarea seleccionada."
+    og_title="Update Tasks"
+    og_description="Apartado donde el usuario puede actualizar el contenido de una tarea seleccionada."
+    og_url=request.build_absolute_uri()
+    og_image="https://schedulepy.nicowooow.site/static/images/logo.svg"
     if request.method == "POST":
         form = UpdateTask(request.POST, user=request.user)
         if form.is_valid():
@@ -127,6 +167,12 @@ def update_tasks(request):
         {
             "page_css": ["css/schedule-projects-tasks.css", "css/forms.css", "css/task.css", "css/schedule.css"],
             "form": form,
+        "og_title":og_title,
+        "description":description,
+        "og_description":og_description,
+        "og_url":og_url,
+        "og_image":og_image,
+        
         },
     )
 

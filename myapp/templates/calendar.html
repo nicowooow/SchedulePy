@@ -1,7 +1,13 @@
 {% extends 'layouts/header.html' %} 
-{% load static %} {% block extra_css %} {%if page_css %} {% for css in page_css %}
-<link rel="stylesheet" href="{% static css %}" />
-{% endfor %} {% endif %} {% endblock %}
+{% load static %} 
+{% block title %} Calendar {% endblock %}
+{% block extra_css %} 
+  {%if page_css %} 
+    {% for css in page_css %}
+      <link rel="stylesheet" href="{% static css %}" />
+    {% endfor %} 
+  {% endif %} 
+{% endblock %}
 {% block content %}
 
 <main>

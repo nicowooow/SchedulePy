@@ -1,24 +1,38 @@
 from django.db.models import Count
 from django.db.models.functions import TruncDate
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import  render
+from django.shortcuts import  render, redirect
 from myapp.models import *
 
 def index(request):
+    description = "SchedulePy es una app web para crear proyectos, tareas y calendarios, y tener tus actividades organizadas en un solo lugar."
+    og_title="SchedulePy"
+    og_description="Crea proyectos, tareas y calendarios en SchedulePy y mantén tus actividades al día."
+    og_url=request.build_absolute_uri()
+    og_image="https://schedulepy.nicowooow.site/static/images/logo.svg"
     user = request.user
-    print(user)
     if(user.is_authenticated):
-        return render(request,'home.html',{
-        'page_css':["css/home.css"],
-        'user':user
-        })
+        return redirect("home")
     
     return render(request,"index.html",{
-        'page_css':"css/index.css"
+        'page_css':"css/index.css",
+        'user':user,
+        "og_title":og_title,
+        "description":description,
+        "og_description":og_description,
+        "og_url":og_url,
+        "og_image":og_image,
     })
 
 @login_required(login_url='sign_in')
 def home(request):
+        
+    description = "Home, es donde puder visuializar ciertas opciones basicas y usarlas como atajos"
+    og_title="Home - SchedulePy"
+    og_description="Visualiza distintas opciones a realizar en SchedulePY."
+    og_url=request.build_absolute_uri()
+    og_image="https://schedulepy.nicowooow.site/static/images/logo.svg"
+    
     user = request.user
     profile = Profile.objects.filter(user=user).first()
 
@@ -38,11 +52,26 @@ def home(request):
         "tasks_count": tasks_count,
         "pending_tasks": pending_tasks,
         "last_project": last_project,
+        "og_title":og_title,
+        "description":description,
+        "og_description":og_description,
+        "og_url":og_url,
+        "og_image":og_image,
     })
 
 def about(request):
+    description = "Una resumen del porque se creo la pagina web, y formas de contacto."
+    og_title="About me"
+    og_description="Hay un pequeño resumen del porque se creo la web, y de paso unos enlaces de contacto."
+    og_url=request.build_absolute_uri()
+    og_image="https://schedulepy.nicowooow.site/static/images/logo.svg"
     return render(request,'about.html',{
-        "page_css":["css/home.css","css/about.css"]
+        "page_css":["css/home.css","css/about.css"],
+        "og_title":og_title,
+        "description":description,
+        "og_description":og_description,
+        "og_url":og_url,
+        "og_image":og_image,
     })
 
 def calendar(request):
@@ -63,11 +92,22 @@ def calendar(request):
             for item in tasks_per_day_qs
         }
     
+    description = "Calendario del usuario, el cual muestra cuantas tareas tiene cierto dia del mes."
+    og_title="Calendar"
+    og_description="Calendario del usuario, el cual muestra cuantas tareas tiene cierto dia del mes."
+    og_url=request.build_absolute_uri()
+    og_image="https://schedulepy.nicowooow.site/static/images/logo.svg"
+    
     return render(
         request,
         "calendar.html",
         {
             "page_css": [ "css/calendar.css","css/home.css"],
             "tasks_per_day": tasks_per_day,
+        "og_title":og_title,
+        "description":description,
+        "og_description":og_description,
+        "og_url":og_url,
+        "og_image":og_image,
         },
     )
