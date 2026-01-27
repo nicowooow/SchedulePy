@@ -51,6 +51,17 @@ img.img-preview {
   width: auto;
   height: auto;
 }
+img.img-preview.img1 {
+  width: 100%;
+}
+img.img-preview.img2 {
+  width: 20%;
+
+}
+img.img-preview.img3 {
+  width: 80%;
+
+}
 /* Feature list */
 #features ul,
 #how-it-works ol {
@@ -81,7 +92,10 @@ li {
   border-radius: var(--radius-pill);
   font-weight: 600;
   font-size: 0.95rem;
-  transition: transform 160ms ease, box-shadow 160ms ease, opacity 160ms ease;
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    opacity 160ms ease;
 }
 
 .btn:focus {
